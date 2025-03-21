@@ -25,4 +25,16 @@ class AiBarcodePlugin : FlutterPlugin, MethodCallHandler {
             AndroidCreatorViewFactory(flutterPluginBinding.binaryMessenger)
         )
     }
+
+    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+        when (call.method) {
+            "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
+            "test" -> result.success("Android test")
+            else -> result.notImplemented()
+        }
+    }
+
+    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        channel.setMethodCallHandler(null)
+    }
 }
