@@ -24,4 +24,5 @@ class AiBarcodePlugin : FlutterPlugin, MethodCallHandler {
             "view_type_id_creator_view",
             AndroidCreatorViewFactory(flutterPluginBinding.binaryMessenger)
         )
+    }
 }
